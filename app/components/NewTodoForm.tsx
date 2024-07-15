@@ -1,14 +1,8 @@
-'use client';
-
-import { useState } from 'react';
-
 const NewTodoForm = () => {
-  const [state, updateState] = useState('');
-
   return (
     <div>
       <form>
-        <input type="text" />
+        <input type="text" className="border border-black" />
       </form>
     </div>
   );
