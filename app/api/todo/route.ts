@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server';
+import db from '@/utils/db';
 
-export const GET = async (request: Request, response: Response) => {
-  return NextResponse.json({ message: 'hello' });
+export const GET = async (request: Request) => {
+  const todos = await db.todo.findMany({});
+  return NextResponse.json({ data: todos });
 };
 
 export const POST = async (request: Request, response: Response) => {
   const data = await request.json();
-  return NextResponse.json({ message: data });
+  const todo = await db.todo.create({ data });
+  return NextResponse.json({ message: todo });
 };
